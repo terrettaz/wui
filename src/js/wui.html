@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title>Widget User Interface</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="wui.css"/>
+        <script type="text/javascript" src="../../lib/prototype.js"></script>
+        <script type="text/javascript" src="wui.js"></script>
+        <script type="text/javascript" src="countries.js"></script>
+        <style type="text/css" media="screen">
+            body, input {
+                font-size: 12pt;
+            }
+            p.sep {
+                padding-top: 1em;
+                border-top: 1px solid #999;
+            }
+            pre {
+                font-size: small;
+                background-color: #eee;
+                padding: 5px;
+                border: 1px solid #aaa;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>WUI</h2>
+        <p>
+        Widget User Interface <br/><em>based on Prototypejs.org</em>
+        </p>
+        <p>
+            <h4><code>WUI.AutoComplete</code></h4>
+            <em>Very simple example, an auto complete field</em><br/>
+            <label for="autoComplete">Auto complete: </label>
+            <input type="text" id="autoComplete" name="autoComplete" />
+            <div><a href="#" onclick="$('codeAutoComplete').toggle()">Code</a></div>
+<pre id="codeAutoComplete" style="display: none">
+&lt;input type="text" id="token" name="token" /&gt;
+&lt;script type="text/javascript" charset="utf-8"&gt;
+    new WUI.AutoComplete('autoComplete', {data: countries_items});
+&lt;/script&gt;
+</pre>
+        </p>
+        
+        <script type="text/javascript" charset="utf-8">
+            new WUI.AutoComplete('autoComplete', {
+                data: countries_items,
+                });
+        </script>
+        
+        <p>
+            <h4><code>WUI.Token</code></h4>
+            <em>Complexe example, with customized results listitem. Use the backspace or double click to remove tokens</em><br/>
+            <label for="token">Token: </label><span id="tokenEventResults"></span>
+            <input type="text" id="token" name="token" />
+            <div><a href="#" onclick="$('codeToken').toggle()">Code</a></div>
+<pre id="codeToken" style="display: none">
+&lt;input type="text" id="token" name="token" /&gt;
+&lt;script type="text/javascript" charset="utf-8"&gt;
+    var selected = new Array();
+    selected.push(168)
+    var template = new Template('&lt;span style="float:right; color:grey"&gt;#{tool}&lt;/span&gt;&lt;div&gt;#{label}&lt;/div&gt;');
+    var token = new WUI.Token('token', {
+        data: countries_items,
+        selected: selected,
+        rowTemplate: template,
+        onAdd: function(id) {
+            $('tokenEventResults').update(e);
+        },
+        onRemove: function(id) {
+            $('tokenEventResults').update(e);
+        }
+        });
+&lt;/script&gt;
+</pre>
+        </p>
+        
+        <script type="text/javascript" charset="utf-8">
+            var selected = new Array();
+            selected.push(168)
+            var template = new Template('<span style="float:right; color:grey">#{tooltip}</span><div>#{label}</div>');
+            var token = new WUI.Token('token', {
+                data: countries_items,
+                selected: selected,
+                rowTemplate: template,
+                onAdd: function(id) {
+                    $('tokenEventResults').update(e);
+                },
+                onRemove: function(id) {
+                    $('tokenEventResults').update(e);
+                }
+                });
+        </script>
+        
+        <p>
+            <em>Simple example of tokens with live search in Ajax.</em><br/>
+            <label for="tokenAjax">Token (ajax): </label>
+            <input type="text" id="tokenAjax" name="tokenAjax" />
+            <div><a href="#" onclick="$('codeTokenAjax').toggle()">Code</a></div>
+<pre id="codeTokenAjax" style="display: none">
+&lt;input type="text" id="token" name="token" /&gt;
+&lt;script type="text/javascript" charset="utf-8"&gt;
+    var token_ajax = new WUI.Token('tokenAjax', {
+        dataUrl: '/url/to/get/listitem/as/json?anyother=value&canbepassed=value2'});
+&lt;/script&gt;
+</pre>
+        </p>
+        
+        <script type="text/javascript" charset="utf-8">
+            var token_ajax = new WUI.Token('tokenAjax', {
+                dataUrl: '/url/to/get/listitem/as/json?anyother=value&canbepassed=value2'});
+        </script>
+    </body>
+</html>

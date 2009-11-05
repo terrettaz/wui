@@ -1,0 +1,103 @@
+.fakeInput * {
+    outline: none;
+}
+
+.liveSearchResult, .fakeInput {
+    width: 300px;
+}
+
+.liveSearchResult {
+    height: 150px;
+    overflow: auto;
+    border: solid 1px #999;
+    border-top: 0px;
+    position: absolute;
+    background-color: #fff;
+    opacity: 0.9;
+}
+
+.liveSearchResult .odd,
+.liveSearchResult .even,
+.liveSearchResult .empty {
+    padding: 2px 5px;
+    cursor: pointer;
+}
+
+.liveSearchResult .even {
+    border-bottom: 1px solid #eee;
+}
+.liveSearchResult .odd {
+    border-bottom: 1px solid #eee;
+}
+.liveSearchResult .empty { }
+
+.liveSearchResult .selected {
+    background-color: #ff9;
+}
+
+.liveSearchResult .highlight {
+    background-color: yellow;
+}
+
+.fakeInput {
+    display: block;
+    border: 1px solid #9BADCF;
+    cursor: text;
+    background-color: white;
+}
+
+.fakeInput .tokenizer input {
+    background: none;
+    border: none;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 4px;
+}
+
+.fakeInput .tokenizer {
+    float: left;
+    width: 30px;
+    background: none;
+    
+}
+
+.token {
+    float: left;
+    padding: 2px;
+    margin: 2px;
+}
+
+.token span {
+    display: block;
+    background: url(images/token.gif) no-repeat top left;
+}
+
+.token span span {
+    background-position: top right;
+}
+
+.token span span span {
+    background-position: bottom right;
+}
+
+.token span span span span {
+    background-position: bottom left;
+}
+
+.token span span span span span.label{
+    padding: 5px;
+}
+
+.token_selected span {
+    background-image: url(images/token_selected.gif);
+    color: #fff;
+}
+
+div.token_remove {
+    background: transparent url(images/token_remove.gif) no-repeat 50%;
+    cursor: pointer;
+    float: right;
+    padding-left: 10px;
+}
