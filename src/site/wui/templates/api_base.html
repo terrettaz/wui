@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <title>Widget User Interface | API</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/style.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="/wui/wui.css"/>
+    <script type="text/javascript" src="/lib/prototype.js"></script>
+    <script type="text/javascript" src="/wui/countries.js"></script>
+    <script type="text/javascript" src="/wui/wui.js"></script>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <a href="{% url api-index %}">
+            <h1>Widget User Interface</h1>
+            </a>
+        </div>
+        <div id="sidebar">
+            <h3>Documentation</h3>
+            {% for ns, ns_data in doc.ns.items %}
+            <h4><a class="api_ns" href="{% url api-namespace ns %}">{{ns}}</a></h4>
+                {% for cls, cls_data in ns_data.classes.items %}
+                <a class="api_class" href="{% url api-class ns cls %}">{{cls}}</a>
+                {% endfor %}
+            {% endfor %}
+            <h3>Download</h3>
+            <a href="http://github.com/terrettaz/wui/">SCM</a>
+            <a href="{% url api-download %}">Zipped</a>
+        </div>
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</body>
+</html>

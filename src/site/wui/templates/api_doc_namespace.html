@@ -1,0 +1,23 @@
+{% extends "api_base.html" %}
+{% block content %}
+<div class="api_namespace">
+    {{ns.namespace}}
+</div>
+<div>
+{{ns.comment|linebreaks}}
+</div>
+{% if ns.notice %}
+<div>
+    <h4>Notice</h4>
+    {{ns.notice|linebreaks}}
+</div>
+{% endif %}
+<div class="api_classes">
+    <h4>Classes</h4>
+    <ul>
+    {% for className, class in ns.classes.items %}
+        <li><a href="{% url api-class ns.namespace className %}">{{className}}</a></li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}

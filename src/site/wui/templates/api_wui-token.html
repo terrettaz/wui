@@ -1,0 +1,18 @@
+<p>
+<label for="token">Token: </label>
+<input type="text" name="token" id="token"/>
+<script type="text/javascript" charset="utf-8">
+    new WUI.Token('token', {
+        data : countries_items,
+    });
+</script>
+</p>
+<p>
+<label for="token_ajax">Token (Ajax): </label>
+<input type="text" name="token_ajax" id="token_ajax"/>
+<script type="text/javascript" charset="utf-8">
+    new WUI.Token('token_ajax', {
+        dataUrl : '{% url api-countries %}',
+    });
+</script>
+</p>

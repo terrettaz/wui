@@ -1,0 +1,41 @@
+{% extends "api_base.html" %}
+{% block content %}
+<div class="api_class">
+    {{cls}}
+</div>
+<div>
+{{clazz.comment|linebreaks}}
+</div>
+<div>
+    <h4>Notice</h4>
+{{clazz.notice|linebreaks}}
+</div>
+<div class="api_constructor">
+    {% for constructor in clazz.constructors %}
+    <h4>Constructor</h4>
+    {{constructor.comment}}
+    <div class="api_parameters">
+        Parameters
+        <ul>
+        {% for param in constructor.parameters %}
+            <li>{{param}}</li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="api_options">
+        Options
+        <ul>
+        {% for option in constructor.options %}
+            <li>{{option|linebreaks}}</li>
+        {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+</div>
+
+{% if include %}
+<h4>Example</h4>
+{% include include %}
+{% endif %}
+
+{% endblock %}
